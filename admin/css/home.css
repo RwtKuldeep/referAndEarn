@@ -1,0 +1,571 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+:root {
+  --blue: #287bff;
+  --white: #fff;
+  --grey: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+.sideNavbar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  /*background: rgb(136 72 139/46%);*/
+  background: rgb(162 55 167 / 81%);
+  border-left: 10px solid rgb(136 72 139/46%);
+  transition: 0.5s;
+  overflow: hidden;
+  font-weight: 600;
+  
+}
+.sideNavbar.active {
+  width: 75px;
+}
+.sideNavbar ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.sideNavbar ul li {
+  position: relative;
+  width: 100%;
+
+  list-style: none;
+  /* margin-left: 5px; */
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.sideNavbar ul li:nth-child(1) {
+  pointer-events: none;
+  /* margin-bottom: 25px; */
+  margin-bottom: 8px;
+}
+
+.sideNavbar ul li:hover,
+.sideNavbar ul li.hovered,
+.sideNavbar ul li.active {
+  background: var(--white);
+}
+.sideNavbar ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.sideNavbar ul li:hover a,
+.sideNavbar ul li.hovered a {
+  color: var(--blue);
+}
+.sideNavbar ul li.active a {
+  color: var(--black1);
+  /* cursor: none; */
+}
+.sideNavbar ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 70px;
+  text-align: center;
+}
+.sideNavbar ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+.sideNavbar ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* .sideNavbar ul li:hover a::before{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+} */
+/* .sideNavbar ul li:hover a::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom:  -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+} */
+
+/* main content*/
+.main {
+  position: absolute;
+  width: calc(100% - 250px);
+  left: 250px;
+  min-height: 100vh;
+  /* background: var(--white); */
+  /*background-color: rgba(19, 100, 221, 0.205);*/
+  transition: 0.5s;
+  /* background-color: black; */
+}
+.main.active {
+  width: calc(100% - 75px);
+  left: 75px;
+}
+.topbar {
+  width: 100%;
+  /*background-color: rgb(136 72 139/46%);*/
+  background: rgb(162 55 167 / 81%);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  padding-top: 7px;
+  font-size: 2.5em;
+  cursor: pointer;
+}
+.user {
+  position: relative;
+  min-width: 40px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding-top: 7px;
+  font-size: 2.5em;
+  cursor: pointer;
+}
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* cards */
+.cardbox {
+  position: relative;
+  width: 100%;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cardbox a{
+  text-decoration: none;
+}
+.cardbox .card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border: 2px solid black;
+  box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.cardbox .card .number {
+  position: relative;
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--blue);
+}
+
+.cardbox .card .cardName {
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+.cardbox .card .iconBx {
+  font-size: 3.5rem;
+  color: var(--black2);
+}
+.cardbox .card:hover {
+  background-color: #ed44d8;
+}
+.cardbox .card:hover .number,
+.cardbox .card:hover .cardName,
+.cardbox .card:hover .iconBx {
+  color: var(--white);
+}
+.details {
+  position: relative;
+  width: 100%;
+  padding: 0 12px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  margin-top: 5px;
+}
+.details .recentOrders {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+
+  overflow-y: scroll;
+  max-height: 150px;
+}
+/* recentOrders */
+/* cardHeader */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details table thead td {
+  font-weight: 700;
+}
+.details .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+.details .recentOrders table tbody tr:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+.status {
+  padding: 2px 4px;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.status.deliver {
+  /* background-color: #8de02c; */
+  background-color: green;
+}
+.status.pending {
+  background-color: #f9ca3f;
+}
+.status.inprogress {
+  background-color: #1795ce;
+}
+.status.return {
+  background-color: #f00;
+}
+.status.cancel {
+  background-color: rgb(194, 233, 19);
+}
+
+/* recent Customers */
+.recentCustomers {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 500px;
+  scroll-behavior: smooth;
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  background: var(--white);
+
+  overflow-y: scroll;
+  max-height: 250px;
+}
+.recentCustomers .imgBx {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.recentCustomers .iconBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.recentCustomers table tr td {
+  padding: 10px;
+}
+.recentCustomers table tr td h4 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.recentCustomers table tr td h4 span {
+  font-size: 14px;
+  color: var(--black2);
+}
+.recentCustomers table tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.recentCustomers table tr:hover td h4 span {
+  color: var(--white);
+}
+/* Responsive */
+@media (max-width: 991px) {
+  .sideNavbar {
+    left: -250px;
+    overflow-y: scroll;
+  }
+  .sideNavbar.active {
+    width: 250px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+
+  .main.active {
+    left: 250px;
+  }
+  .cardbox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .recentCustomers {
+    overflow-y: scroll;
+    max-height: 200px;
+    min-height: 400px;
+    /* overflow-y: scroll;
+    max-height: 300px; */
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .cardbox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .cardbox .card {
+    padding: 10px;
+  }
+  .cardbox .card .number {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .cardbox .card .cardName {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .cardbox .card .iconBx {
+    font-size: 2.5rem;
+    padding-top: 5px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .sideNavbar {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .sideNavbar.active {
+    width: 100%;
+    left: 0;
+    background: rgb(162 55 167 / 100%);
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    position: fixed;
+    right: 0;
+    left: initial;
+    color: var(--white);
+  }
+  .main.active {
+    left: 0px;
+  }
+}
+
+/* drop */
+
+.dropbtn {
+  color: var(--black1);
+  cursor: pointer;
+}
+
+.dropdown {
+  /* float: right; */
+  position: relative;
+  display: inline-block;
+  padding-top: 2px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 170px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background: var(--blue);
+}
+
+.show {
+  display: block;
+}
+
+.adminname {
+  text-align: center;
+  /* cursor: none; */
+  padding: 10px 20px;
+}
+
+/* Change Password */
+.center {
+  text-align: center;
+  padding: 10px 0;
+  padding-bottom: 15px;
+  font-size: 3rem;
+}
+
+.setting {
+  width: 70%;
+  margin: auto;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.setting label {
+  font-weight: 600;
+}
+.new {
+  margin-top: 20px;
+  text-align: center;
+}
+.setting input {
+  font-size: 24px;
+  outline: none;
+  padding: 2px;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 25px;
+  padding: 10px;
+}
+
+.saveBox {
+  text-align: center;
+  margin-top: 30px;
+}
+.save {
+  padding: 5px 20px;
+  margin-top: 10px;
+}
+@media (max-width: 680px) {
+  .setting {
+    flex-direction: column;
+    width: auto;
+    padding: 10px;
+    font-size: 20px;
+  }
+  .setting input {
+    font-size: 24px;
+    width: 100%;
+  }
+  .saveBox {
+    text-align: center;
+    margin-top: 0;
+  }
+  .center {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .center {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,51 @@
+<?php
+require '../../pack/config.php';
+if ($Admin)
+    {
+        
+     $id = input($_POST['id']);
+    
+    $getid = $id;
+    $dir = '../../../image/product/';
+    
+        $extension = array('jpg', 'jpeg', 'png', 'gif', 'jfif','JPG','JPEG','PNG','GIF','JFIF');
+        foreach ($_FILES['image']['tmp_name'] as $key => $value) 
+        {
+        
+            $filename = $_FILES['image']['name'][$key];
+            $filename_tmp = $_FILES['image']['tmp_name'][$key];
+            $final = '';
+    
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if (in_array($ext, $extension)) 
+            {
+    
+                if (!file_exists($dir . $filename)) {
+                    move_uploaded_file($filename_tmp, $dir . $filename);
+                    $final = $filename;
+                } else {
+                    $filename = str_replace('.', '-', basename($filename, $ext));
+                    $newfilename = $filename . time() . "." . $ext;
+                    move_uploaded_file($filename_tmp, $dir . $newfilename);
+                    $final = $newfilename;
+                }
+            }
+            $img_update = db("update product set path='$final' where id='$getid'");
+            // echo "update product set path='$final' where id='$getid'";
+        }
+        if ($img_update) 
+        {    
+            $_SESSION['msg'] = "Success";
+            header("location:../../project_edit.php?id=$id");
+        } else {
+            $_SESSION['msg'] = "Fail";
+            header("location:../../project_edit.php?id=$id");
+        }
+    
+}
+else 
+{
+    $_SESSION['msg'] = "Invalid Login!";
+    header('location:../../index.php');
+}
+?>
