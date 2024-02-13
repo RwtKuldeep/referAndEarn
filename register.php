@@ -220,7 +220,10 @@ if (isset($_SESSION['TheUser'])) {
             <form class="formCont" id="registration-form" action="php/register.php" method="post">
                 <div class="row tty">
                     <div class="input-container">
-                        <input type="text" id="username-input" placeholder="Phone number" name="mobile" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="10" required>
+                        <input type="text" id="username-input" placeholder="User Name" name="name" oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="username-input" placeholder="Phone Number" name="mobile" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="10" required>
                     </div>
                     <div class="input-container">
                         <input type="password" id="password-input" name="password" placeholder="Please enter login password" required>
