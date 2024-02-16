@@ -518,18 +518,22 @@ if (isset($_SESSION['TheUser'])) {
                         // echo "select * from users where promo='$us_promo'";
                         $team = db("select * from users where promo='$us_promo'");
                         $team_num = mysqli_num_rows($team);
+                        $total_number+=$team_num;
+
                         if ($team_num > 0) {
                             while ($team_row = mysqli_fetch_assoc($team)) {
                                 $Userid = $team_row['id'];
                                 $Upromo = $team_row['user_promo'];
                                 $team1 = db("select * from users where promo='$Upromo'");
                                 $team1_num = mysqli_num_rows($team1);
+                                $total_number+=$team1_num;
+                               
                                 while ($team1_row = mysqli_fetch_assoc($team1)) {
                                     $UserId1 = $team1_row['id'];
                                     $Upromo1 = $team1_row['user_promo'];
                                     $team2 = db("select * from users where promo='$Upromo1'");
                                     $team2_num = mysqli_num_rows($team2);
-                                    $total_number = $team_num + $team1_num + $team2_num;
+                                    $total_number +=$team2_num;
                         ?>
                             <?php
                                 }
