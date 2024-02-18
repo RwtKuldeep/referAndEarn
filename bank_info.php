@@ -19,7 +19,7 @@ $uid=$_SESSION['userid'];
             padding:15px 0px 14px 0px;
         }
         .aad{
-           background:orange;
+           background:#FFCC00;
            color:white;
            display:flex;
            align-items:center;
@@ -27,6 +27,7 @@ $uid=$_SESSION['userid'];
         .al{
             font-size:17px;
             margin:0px 0px 0px 0px;
+            cursor: pointer;
         }
 
         .input-container {
@@ -164,7 +165,7 @@ $uid=$_SESSION['userid'];
         
 
         #login-button {
-                background-color: orange;
+                background-color: red;
                 color: #fff;
                 padding: 10px 15px;
                 border: none;
@@ -219,7 +220,7 @@ $uid=$_SESSION['userid'];
         </div>
             </div >
             <div class="row bbtn">
-                    <button type="submit" id="login-button">Submit</button>
+                    <button type="submit" id="login-button">Confirm</button>
                     </div>
             </form>
         </div>
