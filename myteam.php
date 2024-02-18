@@ -46,6 +46,8 @@ if (isset($_SESSION['TheUser'])) {
             .a2 {
                 padding: 15px 0px 0px 27px;
                 width: 100%;
+                display: flex;
+                align-items: center;
             }
 
             .a3 {
@@ -53,13 +55,14 @@ if (isset($_SESSION['TheUser'])) {
             }
 
             .info {
-                color: orange;
+                color: #FFCC00;
                 font-size: 14px;
             }
 
             .emg {
                 height: 40px;
                 width: 60px;
+                border-radius: 50%;
             }
 
             .ssy {
@@ -74,12 +77,12 @@ if (isset($_SESSION['TheUser'])) {
                 width: 100%;
             }
 
-            .mainDiv{
-                    width: 100%;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    border-bottom: 3px solid #F8F2F2;
-                }
+            .mainDiv {
+                width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                border-bottom: 3px solid #F8F2F2;
+            }
 
             .aae {
                 margin: 20px 0px 0px 0px;
@@ -257,6 +260,9 @@ if (isset($_SESSION['TheUser'])) {
 
                 .a2 {
                     padding: 15px 0px 0px 27px;
+                    width: 100%;
+                    display: flex;
+                    align-items: center; 
                 }
 
                 .a3 {
@@ -264,13 +270,14 @@ if (isset($_SESSION['TheUser'])) {
                 }
 
                 .info {
-                    color: orange;
+                    color: #FFCC00;
                     font-size: 14px;
                 }
 
                 .emg {
                     height: 40px;
                     width: 60px;
+                    border-radius: 50%;
                 }
 
                 .ssy {
@@ -278,7 +285,7 @@ if (isset($_SESSION['TheUser'])) {
                     padding-bottom: 100px;
                 }
 
-                .mainDiv{
+                .mainDiv {
                     width: 100%;
                     display: flex;
                     flex-wrap: nowrap;
@@ -616,7 +623,7 @@ if (isset($_SESSION['TheUser'])) {
                             </div>
                             <div class="col-xs-4 a3">
                                 <p class="info">Phone: <?php echo $fetch['mobile']; ?></p>
-                                <p class="info">Recommended number:0</p>
+                                <!-- <p class="info">Recommended number:0</p> -->
                                 <p class="info">Registration time <?php echo $fetch['addon']; ?></p>
                             </div>
                         </div>
@@ -649,35 +656,38 @@ if (isset($_SESSION['TheUser'])) {
                             $ufetch = mysqli_fetch_assoc($u);
             ?>
                             <div class="crd">
-                                <div class="row a0">
-                                    <div class="col-xs-2 a1">
-                                        <img src="img/im1.png" class="emg">
-                                    </div>
-                                    <div class="col-xs-4 a2">
-                                        <p class="info">Name:<?php echo $ufetch['name']; ?></p>
-                                        <?php
-                                        // echo "select SUM(amountpaid) as amount from orders where uid='$lids'";
-                                        $invest = db("select SUM(amountpaid) as amount from orders where uid='$l2ids'");
-                                        $inum = mysqli_num_rows($invest);
-                                        $ires = mysqli_fetch_assoc($invest);
-                                        $iamountts = $ires['amount'];
-                                        if ($iamountts != "") {
-                                            $iamountts;
-                                        } else {
-                                            $iamountts = 0;
-                                        }
-                                        $with = db("select SUM(amount) as amount from withdrawal_request where uid='$l2ids'");
-                                        $wnum = mysqli_num_rows($with);
-                                        $wres = mysqli_fetch_assoc($with);
-                                        $wamounts = $wres['amount'];
-                                        if ($wamounts != "") {
-                                            $wamounts;
-                                        } else {
-                                            $wamounts = 0;
-                                        }
-                                        ?>
-                                        <p class="info">Investment:<?php echo $iamountts; ?>.00</p>
-                                        <p class="info">Withdraw:<?php echo $wamounts; ?>.00</p>
+                                <div class="row mainDiv">
+                                    <div class="row a2">
+                                        <div class="col-xs-2">
+                                            <img src="img/dhl_logo.jpg" class="emg">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <p class="info">Name:<?php echo $ufetch['name']; ?></p>
+                                            <?php
+                                            // echo "select SUM(amountpaid) as amount from orders where uid='$lids'";
+                                            $invest = db("select SUM(amountpaid) as amount from orders where uid='$l2ids'");
+                                            $inum = mysqli_num_rows($invest);
+                                            $ires = mysqli_fetch_assoc($invest);
+                                            $iamountts = $ires['amount'];
+                                            if ($iamountts != "") {
+                                                $iamountts;
+                                            } else {
+                                                $iamountts = 0;
+                                            }
+                                            $with = db("select SUM(amount) as amount from withdrawal_request where uid='$l2ids'");
+                                            $wnum = mysqli_num_rows($with);
+                                            $wres = mysqli_fetch_assoc($with);
+                                            $wamounts = $wres['amount'];
+                                            if ($wamounts != "") {
+                                                $wamounts;
+                                            } else {
+                                                $wamounts = 0;
+                                            }
+                                            ?>
+                                            <p class="info">Investment:<?php echo $iamountts; ?>.00</p>
+                                            <p class="info">Withdraw:<?php echo $wamounts; ?>.00</p>
+                                        </div>
+
                                     </div>
                                     <div class="col-xs-4 a3">
                                         <p class="info">Phone:<?php echo $ufetch['mobile']; ?></p>
@@ -723,35 +733,39 @@ if (isset($_SESSION['TheUser'])) {
                                     $Fetch = mysqli_fetch_assoc($Select);
             ?>
                                     <div class="crd">
-                                        <div class="row">
-                                            <div class="col-xs-2 a1">
-                                                <img src="img/im1.png" class="emg">
-                                            </div>
-                                            <div class="col-xs-4 a2">
-                                                <p class="info">Name:<?php echo $Fetch['name']; ?></p>
-                                                <?php
-                                                // echo "select SUM(amountpaid) as amount from orders where uid='$lids'";
-                                                $invest = db("select SUM(amountpaid) as amount from orders where uid='$UIDS'");
-                                                $inum = mysqli_num_rows($invest);
-                                                $ires = mysqli_fetch_assoc($invest);
-                                                $iamountts1 = $ires['amount'];
-                                                if ($iamountts1 != "") {
-                                                    $iamountts1;
-                                                } else {
-                                                    $iamountts1 = 0;
-                                                }
-                                                $with = db("select SUM(amount) as amount from withdrawal_request where uid='$UIDS'");
-                                                $wnum = mysqli_num_rows($with);
-                                                $wres = mysqli_fetch_assoc($with);
-                                                $wamounts1 = $wres['amount'];
-                                                if ($wamounts1 != "") {
-                                                    $wamounts1;
-                                                } else {
-                                                    $wamounts1 = 0;
-                                                }
-                                                ?>
-                                                <p class="info">Investment:<?php echo $iamountts1; ?>.00</p>
-                                                <p class="info">Withdraw:<?php echo $wamounts1; ?>.00</p>
+
+                                        <div class="row mainDiv">
+                                            <div class="row a2">
+                                                <div class="col-xs-2 a1">
+                                                    <img src="img/dhl_logo.jpg" class="emg">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p class="info">Name:<?php echo $Fetch['name']; ?></p>
+                                                    <?php
+                                                    // echo "select SUM(amountpaid) as amount from orders where uid='$lids'";
+                                                    $invest = db("select SUM(amountpaid) as amount from orders where uid='$UIDS'");
+                                                    $inum = mysqli_num_rows($invest);
+                                                    $ires = mysqli_fetch_assoc($invest);
+                                                    $iamountts1 = $ires['amount'];
+                                                    if ($iamountts1 != "") {
+                                                        $iamountts1;
+                                                    } else {
+                                                        $iamountts1 = 0;
+                                                    }
+                                                    $with = db("select SUM(amount) as amount from withdrawal_request where uid='$UIDS'");
+                                                    $wnum = mysqli_num_rows($with);
+                                                    $wres = mysqli_fetch_assoc($with);
+                                                    $wamounts1 = $wres['amount'];
+                                                    if ($wamounts1 != "") {
+                                                        $wamounts1;
+                                                    } else {
+                                                        $wamounts1 = 0;
+                                                    }
+                                                    ?>
+                                                    <p class="info">Investment:<?php echo $iamountts1; ?>.00</p>
+                                                    <p class="info">Withdraw:<?php echo $wamounts1; ?>.00</p>
+                                                </div>
+
                                             </div>
                                             <div class="col-xs-4 a3">
                                                 <p class="info">Phone:<?php echo $Fetch['mobile']; ?></p>
