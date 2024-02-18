@@ -108,7 +108,6 @@ if (isset($_SESSION['TheUser'])) {
                 background: white;
                 margin: 10px 0px 0px 0px;
                 border-radius: 25px;
-                width: 356px;
 
             }
 
@@ -132,7 +131,7 @@ if (isset($_SESSION['TheUser'])) {
             .ffa {
                 display: flex;
                 align-items: center;
-                background: orange;
+                background: #FFCC00;
                 color: white;
             }
 
@@ -253,7 +252,7 @@ if (isset($_SESSION['TheUser'])) {
                 .ffa {
                     display: flex;
                     align-items: center;
-                    background: orange;
+                    background: #FFCC00;
                     color: white;
                 }
 
@@ -318,7 +317,6 @@ if (isset($_SESSION['TheUser'])) {
                     background: white;
                     margin: 10px 0px 0px 0px;
                     border-radius: 16px;
-                    width: 330px;
 
                 }
 

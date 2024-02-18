@@ -115,7 +115,7 @@ if (isset($_SESSION['TheUser'])) {
         .tabs {
             display: flex;
             justify-content: space-between;
-            background-color: orange;
+            background-color: #FFCC00;
             color: #fff;
             padding: 10px;
             height: 230px;
@@ -222,7 +222,7 @@ if (isset($_SESSION['TheUser'])) {
             .tabs {
                 display: flex;
                 justify-content: center;
-                background-color: orange;
+                background-color: #FFCC00;
                 color: #fff;
                 padding: 10px 0px 10px 0px;
                 height: 230px;
