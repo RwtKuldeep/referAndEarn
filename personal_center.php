@@ -7,7 +7,7 @@ if(isset($_SESSION['TheUser'])){
         <?php include "pack/header.php";?>
         <style>
         .aad{
-           background:orange;
+           background:#FFCC00;
            color:white;
            display:flex;
            align-items:center;
@@ -15,6 +15,7 @@ if(isset($_SESSION['TheUser'])){
         .al{
             font-size:17px;
             margin:0px 0px 0px 0px;
+            cursor: pointer;
         }
         .line{
             background:#8080804a;
@@ -30,10 +31,11 @@ if(isset($_SESSION['TheUser'])){
             display:flex;
             align-items:center;
             margin-top:-11px;
+            color: black;
         }
         .wall{
             font-size:18px;
-            color:orange;
+            color:#FFCC00;
             padding: 20px 15px 0px 15px;
         }
         .bank{
@@ -60,12 +62,12 @@ if(isset($_SESSION['TheUser'])){
                     <hr class="line">
                     <a href="change_password.php"><div class="row aag">
                     <i class='fas fa-lock wall'></i>
-                    <p class="bank">Change Login Password</p>
+                    <p class="bank">Change login Password</p>
                     </div></a>
                     <hr class="line">
                     <a href="bank_password.php"><div class="row aag">
                     <i class='fas fa-lock wall'></i>
-                    <p class="bank">Change Pay Password</p>
+                    <p class="bank">Change withdrawl password</p>
                     </div></a>
                     <hr class="line">
             </div>
