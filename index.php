@@ -60,7 +60,7 @@ if (isset($_SESSION['TheUser'])) {
             }
 
             .aag {
-                background:#FFCC00;
+                background: #FFCC00;
                 margin: 0px 0px 0px 0px;
             }
 
@@ -80,14 +80,14 @@ if (isset($_SESSION['TheUser'])) {
 
             .cardd0 {
                 width: 96%;
-                background:red;
+                background: red;
                 padding: 0px 0px 50px 0px;
                 margin: 10px 0px 0px 0px;
             }
 
             .cardd1 {
                 width: 96%;
-                background:red;
+                background: red;
                 border-radius: 12px;
                 padding: 0px 0px 50px 0px;
                 margin: 10px 0px 0px 0px;
@@ -95,7 +95,7 @@ if (isset($_SESSION['TheUser'])) {
 
             .cardd2 {
                 width: 96%;
-                background:red;
+                background: red;
                 border-radius: 12px;
                 padding: 0px 0px 50px 0px;
                 margin: 10px 0px 0px 0px;
@@ -242,6 +242,13 @@ if (isset($_SESSION['TheUser'])) {
                 font-size: 12px;
                 font-weight: bold;
                 text-align: center;
+            }
+
+            .modal-title {
+                width: 100%;
+                display: flex;
+                text-align: center;
+                justify-content: center;
             }
         </style>
     </head>
@@ -459,7 +466,7 @@ if (isset($_SESSION['TheUser'])) {
                             </div>
                         </div>
                         <div class="row aat">
-                            
+
                             <div class="tab1">
                                 <p class="pp1">Total Income:</p>
                                 <p class="pp1">₹450000</p>
@@ -493,7 +500,7 @@ if (isset($_SESSION['TheUser'])) {
                             </div>
                         </div>
                         <div class="row aat">
-                            
+
                             <div class="tab1">
                                 <p class="pp1">Total Income:</p>
                                 <p class="pp1">₹255000</p>
@@ -528,7 +535,7 @@ if (isset($_SESSION['TheUser'])) {
                             </div>
                         </div>
                         <div class="row aat">
-                            
+
                             <div class="tab1">
                                 <p class="pp1">Total Income:</p>
                                 <p class="pp1">₹255000</p>
@@ -557,21 +564,18 @@ if (isset($_SESSION['TheUser'])) {
 
                 <!--Modal content-->
                 <div class="modal-content">
-                    <div class="modal-header" style="background:orange;color:white;">
-                        <center>
-                            <h4 class="modal-title">Notice</h4>
-                        </center>
+                    <div class="modal-header" style="background:#FFCC00;color:red;">
+                        <h4 class="modal-title">Carnival APP</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>Welcome to the Rangerover Long Term App</p>
-                        <p>Registration bonus = 60 rs.</p>
-                        <p>Minimum Withdrawal = 120 rs.</p>
-                        <p>Withdrawal time = 00:30-18:30.</p>
-                        <p style="color:red;">All plans = daily income, daily withdrawals.</p>
+                        <p>Welcome to join Carnival APP</p>
+                        <p>✅😎Share invitation links to major social platforms, form a team, and earn your own extra rewards 24%+3%+1%</p>
+                        <p>✅Purchase multiple plans and plan benefits stack up💯💯</p>
+                        <p>😘😎Thank you to all users for your support and love, we will accompany you to get rich together!</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" style="background-color: #333;color:white" data-dismiss="modal">Ok</button>
                     </div>
                 </div>
 
