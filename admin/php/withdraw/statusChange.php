@@ -9,7 +9,7 @@ if ($Admin)
     $update = db("update withdrawal_request set status ='$status' where id = '$ide'");
     // echo "update pricing set status ='$status' where id = '$ide'";
 
-    
+    $updated_asset=0;
         if($update)
         {
             $s=db("select * from withdrawal_request where id='$ide'");
@@ -22,15 +22,15 @@ if ($Admin)
                  $bonus=$res['asset'];
                  $phone=$res['mobile'];
         
-                $w=db("select * from withdrawal_request where uid='$u_id'");
+                $w=db("select * from withdrawal_request where uid='$u_id' and id='$ide'");
                 if(mysqli_num_rows($w)>0){
                     $wres=mysqli_fetch_assoc($w);
-                     $wamount=$wres['amount'];
+                     $wamount=$wres['wamount'];
                      $status=$wres['status'];
                     if($status==='2'){
                          $updated_asset=$bonus+$wamount;
-                }
                         $up=db("update users set asset='$updated_asset' where id='$u_id'");
+                } 
                 }
             }
             $_SESSION['msg'] = "Status Update succesfully...";

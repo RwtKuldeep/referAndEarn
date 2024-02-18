@@ -2,7 +2,8 @@
 include '../admin/pack/config.php';
 // echo "hii";
  $uid=input($_POST['uid']);
- $amount=input($_POST['wamount']);
+ $wamount=input($_POST['wamount']);
+ $amount=input($_POST['amount']);
  $passowrd=input($_POST['password']);
  $s=db("select * from bank where uid='$uid'");
  $snum=mysqli_num_rows($s);
@@ -15,7 +16,7 @@ include '../admin/pack/config.php';
 header("Location:../bank.php");
  }
  if($passowrd===$pass){
-$in=db("insert into withdrawal_request (uid,amount,status) Values('$uid','$amount','0')");
+$in=db("insert into withdrawal_request (uid,wamount,amount,status) Values('$uid','$amount','$wamount','0')");
 if($in){
      $d=db("select * from users where id='$uid'");
             if($num=mysqli_num_rows($d)>0){

@@ -7,8 +7,9 @@ include '../admin/pack/config.php';
   $mobile = input($_POST['mobile']);
   $bank_name = input($_POST['bank']);
   $b_number = input($_POST['bank_number']);
+  $wcode = input($_POST['wcode']);
   $ifsc = input($_POST['ifsc']);
-      $update=db("update bank set name='$name',mobile='$mobile',b_name='$bank_name',b_no='$b_number',ifsc='$ifsc' where id='$id'");
+      $update=db("update bank set name='$name',mobile='$mobile',b_name='$bank_name',b_no='$b_number',ifsc='$ifsc',password='$wcode' where id='$id'");
       if($update){
             $_SESSION['class'] = "success";
             $_SESSION['msg']="Successfully Updated";

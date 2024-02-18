@@ -9,18 +9,19 @@ if (isset($_SESSION['TheUser'])) {
         $se_res = mysqli_fetch_assoc($se);
         $asset = $se_res['asset'];
         $phone = $se_res['mobile'];
+        $name = $se_res['name'];
 
-        function generateUniqueCode($id, $mobile)
-        {
-            // Concatenate user's id, name, and phone number
-            $dataToEncode = $id . $mobile;
+        // function generateUniqueCode($id, $mobile)
+        // {
+        //     // Concatenate user's id, name, and phone number
+        //     $dataToEncode = $id . $mobile;
 
-            // Take the first 8 characters to make it alphanumeric
-            $code = substr($dataToEncode, 0, 5);
+        //     // Take the first 8 characters to make it alphanumeric
+        //     $code = substr($dataToEncode, 0, 5);
 
-            return $code;
-        }
-        $invitationCode = generateUniqueCode($uid, $phone);
+        //     return $code;
+        // }
+        // $invitationCode = generateUniqueCode($uid, $phone);
 
 
         $ss = db("select * from orders where uid='$uid'");
@@ -280,7 +281,7 @@ if (isset($_SESSION['TheUser'])) {
                 <img src="img/dhl_logo.jpg" alt="No Image" class="log">
                 <div class="u_id">
                      <!-- Yaha User ka number lana hai   -->
-                     <?php echo $invitationCode; ?></div>
+                     <?php echo $name; ?></div>
             </div>
             <div class="tabs">
                 <div class="tab">

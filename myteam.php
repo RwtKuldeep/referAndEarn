@@ -1,6 +1,8 @@
 <?php
 include "admin/pack/config.php";
 if (isset($_SESSION['TheUser'])) {
+    $start = input($_GET['start']);
+    $end = input($_GET['end']);
     $uid = $_SESSION['userid'];
     $uss = db("select * from users where id='$uid'");
     $usres = mysqli_fetch_assoc($uss);
@@ -29,7 +31,11 @@ if (isset($_SESSION['TheUser'])) {
             }
 
             .search {
-                margin: 0px 0px 0px 8px;
+                margin: 1px 0px 0px 2px;
+                border-color: orange;
+                background: orange;
+                border-radius: 40px;
+                border: 1px;
             }
 
             .level.active {
@@ -312,28 +318,24 @@ if (isset($_SESSION['TheUser'])) {
         <div class="container-fluid ffa">
             <h3>My Team</h3>
         </div>
-        <!--<div class="container">-->
-        <!--    <div class="row ffs">-->
-        <!--        <div class="item">-->
-        <!--            <input type="date" class="input">-->
-        <!--            </div>-->
-        <!--            <p class="to">to</p>-->
-        <!--            <div class="item">-->
-        <!--                <input type="date" class="input">-->
-        <!--            </div>-->
-        <!--            <div class="item1">-->
-        <!--               <i class="fa fa-search si"></i>-->
-        <!--               <p class="search">search for</p>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--    </div>-->
-
-        <div class="container-fluid searchIcon">
-            <p class="iconTxt">
-                <img style="width: 16px;" src="img/searchIcon.png" alt="ssr">
-                search for
-            </p>
+        <div class="container">
+            <form action="myteam.php" method="GET">
+                <div class="row ffs">
+                    <div class="item">
+                        <input type="date" name="start" class="input" value="<?php echo $start; ?>">
+                    </div>
+                    <p class="to">to</p>
+                    <div class="item">
+                        <input type="date" name="end" class="input" value="<?php echo $end; ?>">
+                    </div>
+                    <div class="item1">
+                        <i class="fa fa-search si"></i>
+                        <button class="search" type="submit">search for</button>
+                    </div>
+                </div>
+            </form>
         </div>
+
         <div class="container-fluid aae">
             <div class="row acd">
                 <div class="acl_covr">
@@ -561,7 +563,14 @@ if (isset($_SESSION['TheUser'])) {
         </div>
         <div class="container-fluid ssy active" id="level1">
             <?php
-            $find = db("select * from users where promo='$us_promo'");
+
+            $level1 = "select * from users where promo='$us_promo'";
+            $level1 .= (!empty($start) && !empty($end)) ? "AND addon BETWEEN '$start' AND '$end' " : "";
+            $level1 .= "ORDER BY addon DESC";
+
+            $find = db($level1);
+
+            
             $fnum = mysqli_num_rows($find);
             if ($fnum > 0) {
                 while ($fres = mysqli_fetch_assoc($find)) {
@@ -619,7 +628,13 @@ if (isset($_SESSION['TheUser'])) {
 
         <div class="container-fluid ssy" style="display:none;" id="level2">
             <?php
-            $find2 = db("select * from users where promo='$us_promo'");
+
+            $level2 = "select * from users where promo='$us_promo'";
+            $level2 .= (!empty($start) && !empty($end)) ? "AND addon BETWEEN '$start' AND '$end' " : "";
+            $level2 .= "ORDER BY addon DESC";
+
+            $find2 = db($level2);
+
             $fnum2 = mysqli_num_rows($find2);
             if ($fnum2 > 0) {
                 while ($fres2 = mysqli_fetch_assoc($find2)) {
@@ -684,7 +699,14 @@ if (isset($_SESSION['TheUser'])) {
         <div class="container-fluid ssy" style="display:none;" id="level3">
             <?php
             // echo "select * from users where promo='$us_promo'";
-            $find3 = db("select * from users where promo='$us_promo'");
+
+            $level3 = "select * from users where promo='$us_promo'";
+            $level3 .= (!empty($start) && !empty($end)) ? "AND addon BETWEEN '$start' AND '$end' " : "";
+            $level3 .= "ORDER BY addon DESC";
+
+            $find3 = db($level3);
+
+
             $num3 = mysqli_num_rows($find3);
             if ($num3 > 0) {
                 while ($row3 = mysqli_fetch_assoc($find3)) {

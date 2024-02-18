@@ -22,7 +22,7 @@ if ($Admin) {
 
     $withdrawal_query = "SELECT amount, status AS Status, addon AS datetime FROM withdrawal_request where uid='$id' ";
 
-    $asset = "SELECT asset AS amount, status AS Status, date_time AS datetime FROM asset where user_id='$id' ";
+    $asset = "SELECT amount AS amount, status AS Status, date_time AS datetime FROM asset where user_id='$id' ";
 
     // Fetch data from the database
     $payments_result = db($payments_query);

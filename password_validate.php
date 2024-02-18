@@ -2,7 +2,8 @@
 include "admin/pack/config.php";
 if(isset($_SESSION['TheUser'])){
 $uid=input($_POST['uid']);
-$amount=input($_POST['wamount']);
+$wamount=input($_POST['wamount']);
+$amount=input($_POST['amount']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -169,8 +170,9 @@ $amount=input($_POST['wamount']);
             <div class="icon" id="password-icon">
                 <i class="fa fa-key p_i"></i>
             </div>
-            <input type="hidden" id="password-input" name="uid" placeholder="Enter Your Withdrawal Password" value="<?php echo $uid;?>">
-            <input type="hidden" id="password-input" name="wamount" placeholder="Enter Your Withdrawal Password" value="<?php echo $amount;?>">
+            <input type="hidden"  name="uid" placeholder="Enter Your Withdrawal Password" value="<?php echo $uid;?>">
+            <input type="hidden"  name="amount" placeholder="Enter Your Withdrawal Password" value="<?php echo $amount;?>">
+            <input type="hidden"  name="wamount" placeholder="Enter Your Withdrawal Password" value="<?php echo $wamount;?>">
             <input type="password" id="password-input" name="password" placeholder="Enter Your Withdrawal Password" required>
             <span class="toggle-password" id="toggle-password"><i class="fa fa-eye"></i>️</span>
         </div>

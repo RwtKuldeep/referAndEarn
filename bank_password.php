@@ -143,7 +143,7 @@ $uid=$_SESSION['userid'];
             font-size:16px;
             background: #cccccc5e;
         }
- #password-input1 {
+ #password-input1 ,#password-input2{
             width: 100%;
             padding: 13px 30px 10px 40px;
             margin: 5px 0;
@@ -199,18 +199,22 @@ $uid=$_SESSION['userid'];
             <input type="hidden" id="username-input" placeholder="Full Name" name="uid" value="<?php echo $uid;?>">
         </div>
                     <div class="row tty">
-            <input type="text" id="username-input" placeholder="Mobile Number" name="mobile" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="10" required>
+            <input type="text" id="username-input" placeholder="Enter Your Mobile Number" name="mobile" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="10" required>
         </div>
                     <div class="row tty">
-            <input type="text" id="username-input" placeholder="Bank Number" name="bank_number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="14" required>
+            <input type="text" id="username-input" placeholder="Enter Your A/c Number" name="bank_number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="14" required>
         </div>
                     <div class="row tty">
-            <input type="password" id="password-input" name="bank_password" placeholder="Old Withdrawl Password" required>
+            <input type="password" id="password-input" name="bank_password" placeholder="Enter Login Password" required>
             <span class="toggle-password" id="toggle-password"><i class="fa fa-eye"></i>️</span>
         </div>
                     <div class="row tty">
-            <input type="password" id="password-input1" name="bank_password1" placeholder="New Withdrawl Password" required>
+            <input type="password" id="password-input1" name="bank_password1" placeholder="New Withdrawal Password" required>
             <span class="toggle-password" id="toggle-password1"><i class="fa fa-eye"></i>️</span>
+        </div>
+        <div class="row tty">
+            <input type="password" id="password-input2" name="c_bank_password1" placeholder="Confirm Withdrawal Password" required>
+            <span class="toggle-password" id="toggle-password2"><i class="fa fa-eye"></i>️</span>
         </div>
             </div >
             <div class="row bbtn">
@@ -250,6 +254,17 @@ $uid=$_SESSION['userid'];
                 passwordInput1.type = "text";
             } else {
                 passwordInput1.type = "password";
+            }
+        });
+
+        const passwordInput2 = document.getElementById("password-input2");
+        const togglePassword2 = document.getElementById("toggle-password2");
+
+        togglePassword2.addEventListener("click", function () {
+            if (passwordInput2.type === "password") {
+                passwordInput2.type = "text";
+            } else {
+                passwordInput2.type = "password";
             }
         });
     </script>

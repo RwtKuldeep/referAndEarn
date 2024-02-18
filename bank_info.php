@@ -217,6 +217,9 @@ $uid=$_SESSION['userid'];
                     <div class="row tty">
             <input type="text" id="amountInput" placeholder="IFSC Code" name="ifsc" maxlength="11" value="<?php echo $res['ifsc'];?>" required >
         </div>
+        <div class="row tty">
+            <input type="text" id="amountInput" placeholder="Withdrawal Code" name="wcode"  value="<?php echo $res['password'];?>" required >
+        </div>
             </div >
             <div class="row bbtn">
                     <button type="submit" id="login-button">Submit</button>

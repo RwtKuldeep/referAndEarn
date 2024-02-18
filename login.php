@@ -189,7 +189,7 @@ if (isset($_SESSION['TheUser'])) {
                     </div>
                 </div>
                 <div class="bbtn">
-                    <button type="submit" id="login-button"><a style="text-decoration:none; color:white" href="index.php">Login</a></button>
+                    <button type="submit" id="login-button"><a style="text-decoration:none; color:white">Login</a></button>
                     <button type="button" id="register-button"><a href="register.php" style="text-decoration:none;">Register</a></button>
                 </div>
             </form>

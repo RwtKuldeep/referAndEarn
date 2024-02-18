@@ -396,11 +396,16 @@ if (isset($_SESSION['TheUser'])) {
                 $withdrawal_query .= (!empty($start) && !empty($end)) ? "AND addon BETWEEN '$start' AND '$end' " : "";
                 $withdrawal_query .= "ORDER BY addon DESC";
 
+                $asset_query = "SELECT amount, status AS Status, date_time AS datetime FROM asset where user_id='$uid' ";
+                $asset_query .= (!empty($start) && !empty($end)) ? "AND date_time BETWEEN '$start' AND '$end' " : "";
+                $asset_query .= "ORDER BY date_time DESC";
+
                 // Fetch data from the database
                 $payments_result = db($payments_query);
                 $withdrawal_result = db($withdrawal_query);
                 // echo "hii";
                 $refer_result = db($referal_query);
+                $asset_result = db($asset_query);
                 $plan_result = db($plan);
 
                 $combined_data = array();
@@ -432,6 +437,13 @@ if (isset($_SESSION['TheUser'])) {
                     $row['symbol'] = '+';
                     $combined_data[] = $row;
                 }
+                
+                // Fetch asset data
+                while ($row = mysqli_fetch_assoc($asset_result)) {
+                    $row['type'] = 'asset';
+                    $row['symbol'] = '+';
+                    $combined_data[] = $row;
+                }
 
                 // Function to sort the combined data by datetime
                 function sortByDateTime($a, $b)
@@ -446,26 +458,6 @@ if (isset($_SESSION['TheUser'])) {
 
                 // Display the combined data
                 if (!empty($combined_data) || $numgetasset > 0) {
-
-                    if ($numgetasset > 0) {
-                        $i = 1;
-                        while ($res = mysqli_fetch_assoc($getasset)) {
-                ?>
-                            <div class="crd">
-                                <div class="row">
-                                    <div class="col-xs-6 a2">
-                                        <p class="info"><?php echo $res['date_time'] ?></p>
-                                        <p class="info1" style="color:orange;">Asset +<?php echo $res['asset'] . '.00'; ?></p>
-                                    </div>
-                                    <div class="col-xs-2 a3"></div>
-                                    <div class="col-xs-4 a3">
-                                        <p class="info2"><span class="badge rounded-pill bg-success">Success</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                    }
                     foreach ($combined_data as $data) {
                         ?>
                         <div class="crd">
