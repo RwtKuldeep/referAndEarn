@@ -6,8 +6,8 @@ include '../admin/pack/config.php';
   $mobile = input($_POST['mobile']);
   $b_number = input($_POST['bank_number']);
   $password = input($_POST['bank_password']);
-  $password1 = input($_POST['bank_password1']);
-  $c_bank_password1 = input($_POST['c_bank_password1']);
+  $password1 = input($_POST['new_password1']);
+  $c_bank_password1 = input($_POST['confirmNew_password']);
 
   if($password1!=$c_bank_password1){
     $_SESSION['class'] = "error";

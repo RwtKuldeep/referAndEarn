@@ -27,10 +27,18 @@ if ($Admin)
                     $wres=mysqli_fetch_assoc($w);
                      $wamount=$wres['wamount'];
                      $status=$wres['status'];
-                    if($status==='2'){
-                         $updated_asset=$bonus+$wamount;
+                    if($status==='1'){
+                         $updated_asset=$bonus-$wamount;
                         $up=db("update users set asset='$updated_asset' where id='$u_id'");
                 } 
+                if($status==='2'){
+                    $updated_asset=$bonus+$wamount;
+                   $up=db("update users set asset='$updated_asset' where id='$u_id'");
+           } 
+           if($status==='0'){
+            $updated_asset=$bonus;
+           $up=db("update users set asset='$updated_asset' where id='$u_id'");
+   }
                 }
             }
             $_SESSION['msg'] = "Status Update succesfully...";
