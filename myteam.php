@@ -45,6 +45,7 @@ if (isset($_SESSION['TheUser'])) {
 
             .a2 {
                 padding: 15px 0px 0px 27px;
+                width: 100%;
             }
 
             .a3 {
@@ -70,9 +71,15 @@ if (isset($_SESSION['TheUser'])) {
                 background: white;
                 margin: 10px 0px 0px 0px;
                 border-radius: 25px;
-                width: 356px;
-
+                width: 100%;
             }
+
+            .mainDiv{
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    border-bottom: 3px solid #F8F2F2;
+                }
 
             .aae {
                 margin: 20px 0px 0px 0px;
@@ -271,12 +278,18 @@ if (isset($_SESSION['TheUser'])) {
                     padding-bottom: 100px;
                 }
 
+                .mainDiv{
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    border-bottom: 3px solid #F8F2F2;
+                }
+
                 .crd {
                     background: white;
                     margin: 10px 0px 0px 0px;
                     border-radius: 16px;
-                    width: 330px;
-
+                    width: 100%;
                 }
 
                 .item1 {
@@ -518,7 +531,7 @@ if (isset($_SESSION['TheUser'])) {
                         // echo "select * from users where promo='$us_promo'";
                         $team = db("select * from users where promo='$us_promo'");
                         $team_num = mysqli_num_rows($team);
-                        $total_number+=$team_num;
+                        $total_number += $team_num;
 
                         if ($team_num > 0) {
                             while ($team_row = mysqli_fetch_assoc($team)) {
@@ -526,14 +539,14 @@ if (isset($_SESSION['TheUser'])) {
                                 $Upromo = $team_row['user_promo'];
                                 $team1 = db("select * from users where promo='$Upromo'");
                                 $team1_num = mysqli_num_rows($team1);
-                                $total_number+=$team1_num;
-                               
+                                $total_number += $team1_num;
+
                                 while ($team1_row = mysqli_fetch_assoc($team1)) {
                                     $UserId1 = $team1_row['id'];
                                     $Upromo1 = $team1_row['user_promo'];
                                     $team2 = db("select * from users where promo='$Upromo1'");
                                     $team2_num = mysqli_num_rows($team2);
-                                    $total_number +=$team2_num;
+                                    $total_number += $team2_num;
                         ?>
                             <?php
                                 }
@@ -570,38 +583,40 @@ if (isset($_SESSION['TheUser'])) {
                     $fetch = mysqli_fetch_assoc($User);
             ?>
                     <div class="crd">
-                        <div class="row">
-                            <div class="col-xs-2 a1">
-                                <img src="img/im1.png" class="emg">
-                            </div>
-                            <div class="col-xs-4 a2">
-                                <p class="info">Name:<?php echo $fetch['name']; ?></p>
-                                <?php
-                                // echo "select SUM(amountpaid) as amount from orders where uid='$lids'";
-                                $invest = db("select SUM(amountpaid) as amount from orders where uid='$lids'");
-                                $inum = mysqli_num_rows($invest);
-                                $ires = mysqli_fetch_assoc($invest);
-                                $iamount = $ires['amount'];
-                                if ($iamount != "") {
-                                    $iamount;
-                                } else {
-                                    $iamount = 0;
-                                }
-                                $with = db("select SUM(amount) as amount from withdrawal_request where uid='$lids'");
-                                $wnum = mysqli_num_rows($with);
-                                $wres = mysqli_fetch_assoc($with);
-                                $wamount = $wres['amount'];
-                                if ($wamount != "") {
-                                    $wamount;
-                                } else {
-                                    $wamount = 0;
-                                }
-                                ?>
-                                <p class="info">Investment:<?php echo $iamount; ?>.00</p>
-                                <p class="info">Withdraw:<?php echo $wamount; ?>.00</p>
+                        <div class="row mainDiv">
+
+                            <div class="row a2">
+                                <img src="img/dhl_logo.jpg" class="emg">
+                                <div class="col-xs-2">
+                                    <p class="info">Name:<?php echo $fetch['name']; ?></p>
+                                    <?php
+                                    // echo "select SUM(amountpaid) as amount from orders where uid='$lids'";
+                                    $invest = db("select SUM(amountpaid) as amount from orders where uid='$lids'");
+                                    $inum = mysqli_num_rows($invest);
+                                    $ires = mysqli_fetch_assoc($invest);
+                                    $iamount = $ires['amount'];
+                                    if ($iamount != "") {
+                                        $iamount;
+                                    } else {
+                                        $iamount = 0;
+                                    }
+                                    $with = db("select SUM(amount) as amount from withdrawal_request where uid='$lids'");
+                                    $wnum = mysqli_num_rows($with);
+                                    $wres = mysqli_fetch_assoc($with);
+                                    $wamount = $wres['amount'];
+                                    if ($wamount != "") {
+                                        $wamount;
+                                    } else {
+                                        $wamount = 0;
+                                    }
+                                    ?>
+                                    <p class="info">Recharge:<?php echo $iamount; ?>.00</p>
+                                    <p class="info">Withdraw:<?php echo $wamount; ?>.00</p>
+                                </div>
                             </div>
                             <div class="col-xs-4 a3">
-                                <p class="info">Phone:<?php echo $fetch['mobile']; ?></p>
+                                <p class="info">Phone: <?php echo $fetch['mobile']; ?></p>
+                                <p class="info">Recommended number:0</p>
                                 <p class="info">Registration time <?php echo $fetch['addon']; ?></p>
                             </div>
                         </div>
@@ -634,7 +649,7 @@ if (isset($_SESSION['TheUser'])) {
                             $ufetch = mysqli_fetch_assoc($u);
             ?>
                             <div class="crd">
-                                <div class="row">
+                                <div class="row a0">
                                     <div class="col-xs-2 a1">
                                         <img src="img/im1.png" class="emg">
                                     </div>
